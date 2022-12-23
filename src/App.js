@@ -1,23 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+
+import Boxlist from "./Boxlist";
+import Button from "./Button";
+import Slider from "./Slider";
+import "./App.css";
 
 function App() {
+  const [isOriginalBehavior, setIsOriginalBehavior] = useState(false);
+  const [usingGuide, setUsingGuide] = useState(true);
+  const [gridSize, setGridSize] = useState(3);
+
+  const changeOriginalBehavior = () => {
+    setIsOriginalBehavior(!isOriginalBehavior);
+  };
+
+  const changeGuide = () => {
+    setUsingGuide(!usingGuide);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Boxlist
+        isOriginalBehavior={isOriginalBehavior}
+        gridSize={gridSize}
+        usingGuide={usingGuide}
+      />
+      <Button
+        handleClick={changeOriginalBehavior}
+        className="button"
+        text="change mode"
+      />
+      <Button
+        handleClick={changeGuide}
+        className="button2"
+        text={usingGuide ? "hide guide" : "show guide"}
+      />
+      <Slider setGridSize={setGridSize} />
     </div>
   );
 }

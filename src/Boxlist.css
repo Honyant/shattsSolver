@@ -1,0 +1,12 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 30px;
+    justify-content: left;
+    margin: 0 auto;
+    width: 100%;
+    padding-top: 50px;
+    padding-right: 27px;
+    background-color: black;
+    color: black;
+}
